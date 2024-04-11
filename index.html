@@ -85,6 +85,9 @@
         }
         async function ManejarOperacion(e) {
             if ($(e.target).val() === '=') {
+                if (numero === 'resul'){
+                    numero = resultado;
+                }
                 $('#operacion').text(resultado + ' ' + tipoOperador + ' ' + numero + '=');
                 operar();
 
