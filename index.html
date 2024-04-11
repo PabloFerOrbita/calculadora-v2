@@ -30,7 +30,7 @@
                     value=8>8</button></div>
             <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero p-3 w-100"
                     value=9>9</button></div>
-            <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary p-3 w-100" value='/'
+            <div class="col-3"><button type="button" class="operador btn btn-light btn-outline-secondary p-3 w-100" value='/'
                     id="dividir">/</button></div>
             <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero p-3 w-100"
                     value=4>4</button></div>
@@ -38,7 +38,7 @@
                     value=5>5</button></div>
             <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero p-3 w-100"
                     value=6>6</button></div>
-            <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary w-100 p-3" value='-'
+            <div class="col-3"><button type="button" class="operador btn btn-light btn-outline-secondary w-100 p-3" value='-'
                     id="restar">-</button></div>
             <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero w-100 p-3"
                     value=3>3</button></div>
@@ -46,11 +46,11 @@
                     value=2>2</button></div>
             <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero w-100 p-3"
                     value=1>1</button></div>
-            <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary p-3 w-100" value='+'
+            <div class="col-3"><button type="button" class="operador btn btn-light btn-outline-secondary p-3 w-100" value='+'
                     id="sumar">+</button></div>
             <div class="col-9"><button type="button" class="btn btn-light btn-outline-secondary numero w-100 p-3"
                     value=0>0</button></div>
-            <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary p-3 w-100" value='*'
+            <div class="col-3"><button type="button" class="operador btn btn-light btn-outline-secondary p-3 w-100" value='*'
                     id="multiplicar">*</button></div>
             <div class="col-12"><button type="button" class="btn btn-light btn-outline-secondary p-3 w-100" value='='
                     id="igual">=</button></div>
@@ -69,6 +69,10 @@
             $('.numero').each((index, element) => {
                 $(element).on('click', setNumero);
             })
+            $('.operador').each((index, element) => {
+                $(element).on('click', operar);
+            })
+            
         }
         function setNumero(e) {
             numero = numero + $(e.target).val();
@@ -77,6 +81,11 @@
         }
         function operar(e) {
             operador = $(e.target).val();
+            if (operador === '='){
+                $('#operacion').text(resultado + ' ' + operador + ' ' + numero);
+            } else {
+                $('#operacion').text(resultado + ' ' + operador);
+            }
 
         }
 
