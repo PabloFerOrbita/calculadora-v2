@@ -78,12 +78,14 @@
 
         }
         function setNumero(e) {
-            if (numero === 'resul' || esIgual == true) {
+            if (numero === 'resul' || esIgual === true) {
                 numero = 0;
 
             }
             if (esIgual === true) {
                 $('#operacion').text('');
+                esIgual = false;
+                resultado= 0;
             }
             numero = numero + $(e.target).val();
             resultado == 'inviable' && ManejarInviable();
@@ -122,6 +124,7 @@
                 }
 
             } else {
+                esIgual = false;
                 if (numero != 'resul') {
                     await operar();
                 }
