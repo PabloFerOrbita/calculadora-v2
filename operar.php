@@ -1,6 +1,6 @@
 <?php
 $numero = $_GET['numero'];
-$resultado = $_GET['_resultado'];
+$resultado = $_GET['resultado'];
 $operador = $_GET['operador'];
 
 switch ($operador) {
@@ -23,7 +23,7 @@ switch ($operador) {
      
 }
 
-echo json_encode(['numero'=> $numero, 'operador' => $operador, 'resultado' => $resultado]);
+echo json_encode(array('numero' => $numero, 'operador' => $operador, 'resultado' => $resultado));
 
 
 ?>

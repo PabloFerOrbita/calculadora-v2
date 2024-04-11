@@ -81,7 +81,7 @@
             $('#resultado').text(numero)
         }
         function MostrarOperacion(e) {
-            if(tipoOperador === 0){
+            if (tipoOperador === 0) {
                 resultado = numero;
             }
             tipoOperador = $(e.target).val();
@@ -97,10 +97,12 @@
         function operar() {
             $.ajax({
                 method: 'GET',
-                url: 'operar.php?resultado=' + resultado + '&numero=' + numero + '&operador=' + tipoOperador,
+                url: 'operar.php',
+                dataType:'json',
+                data: { numero: numero, resultado: resultado, operador: tipoOperador },
                 success: (data) => {
-                    resultado = data['resultado'];
-                    tipoOperador = data['operador'];
+                    resultado = data.resultado;
+                    tipoOperador = data.operador;
 
                 }
             })
