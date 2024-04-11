@@ -69,6 +69,7 @@
             esIgual = false;
             $('#resultado').text(numero);
             $('#eliminar').on('click', Eliminar);
+            $('#resetear').on('click', Resetear);
             $('.numero').each((index, element) => {
                 $(element).on('click', setNumero);
             })
@@ -94,12 +95,23 @@
             $('#resultado').text(numero)
         }
         function Eliminar() {
-            numero = 0;
-            $('#resultado').text(numero);
-            if(esIgual == true){
-                resultado = 0;
-                $('#operacion').text('');
+            if (resultado === 'inviable') {
+                ManejarInviable();
+            } else {
+                numero = 0;
+                $('#resultado').text(numero);
+                if (esIgual == true) {
+                    resultado = 0;
+                    $('#operacion').text('');
+                }
             }
+
+        }
+
+        function Resetear() {
+            numero = 0;
+            ManejarInviable();
+
         }
 
         function ManejarInviable() {
