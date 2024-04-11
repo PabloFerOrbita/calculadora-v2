@@ -52,8 +52,8 @@
                     value=0>0</button></div>
             <div class="col-3"><button type="button" class="operador btn btn-light btn-outline-secondary p-3 w-100"
                     value='*' id="multiplicar">*</button></div>
-            <div class="col-12"><button type="button" class="btn btn-light btn-outline-secondary p-3 w-100" value='='
-                    id="igual">=</button></div>
+            <div class="col-12"><button type="button" class="operador btn btn-light btn-outline-secondary p-3 w-100"
+                    value='=' id="igual">=</button></div>
 
         </div>
     </div>
@@ -70,39 +70,54 @@
                 $(element).on('click', setNumero);
             })
             $('.operador').each((index, element) => {
-                $(element).on('click', MostrarOperacion);
-                $(element).on('click', operar);
+                $(element).on('click', ManejarOperacion);
+
             })
 
         }
         function setNumero(e) {
+            if (numero === 'resul') {
+                numero = 0;
+            }
             numero = numero + $(e.target).val();
             numero = parseInt(numero);
             $('#resultado').text(numero)
         }
-        function MostrarOperacion(e) {
+        async function ManejarOperacion(e) {
             if (tipoOperador === 0) {
                 resultado = numero;
-            }
-            tipoOperador = $(e.target).val();
-            if (tipoOperador === '=') {
-                $('#operacion').text(resultado + ' ' + tipoOperador + ' ' + numero);
-            } else {
+                numero = 0;
+                tipoOperador = $(e.target).val();
                 operar();
                 $('#operacion').text(resultado + ' ' + tipoOperador);
+            } else {
+                if ($(e.target).val() === '=') {
+                    $('#operacion').text(resultado + ' ' + tipoOperador + ' ' + numero + '=');
+                    operar();
+
+                } else {
+
+                    await operar();
+                    tipoOperador = $(e.target).val();
+                    $('#operacion').text(resultado + ' ' + tipoOperador);
+                }
             }
+
 
         }
 
         function operar() {
-            $.ajax({
+            return $.ajax({
                 method: 'GET',
                 url: 'operar.php',
-                dataType:'json',
+                dataType: 'json',
                 data: { numero: numero, resultado: resultado, operador: tipoOperador },
                 success: (data) => {
                     resultado = data.resultado;
-                    tipoOperador = data.operador;
+                    numero = 'resul';
+
+                    $('#resultado').text(resultado);
+
 
                 }
             })
