@@ -122,8 +122,9 @@
                 }
 
             } else {
-
-                await operar();
+                if (numero != 'resul') {
+                    await operar();
+                }
                 tipoOperador = $(e.target).val();
                 if (resultado !== 'inviable') {
                     $('#operacion').text(resultado + ' ' + tipoOperador);
