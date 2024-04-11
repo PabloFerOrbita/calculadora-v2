@@ -15,11 +15,13 @@ switch ($operador) {
         break;
     case '/':
         if ($numero !== 0){
-        $resultado = $resultado + $numero;
+        $resultado = $resultado / $numero;
         } else {
             $resultado = 'inviable';
         }
         break;
+    case 0:
+        $resultado = $numero;
      
 }
 
