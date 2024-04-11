@@ -21,9 +21,9 @@
 
         <div class="row gy-2">
             <div class="col-6"><button type="button" class="btn btn-light btn-outline-secondary p-3 w-100" value='CE'
-                    id="borrar_actual">CE</button></div>
+                    id="eliminar">CE</button></div>
             <div class="col-6"><button type="button" class="btn btn-light btn-outline-secondary p-3 w-100" value="C"
-                    id="borrar_todo">C</button></div>
+                    id="resetear">C</button></div>
             <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero p-3 w-100"
                     value=7>7</button></div>
             <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero p-3 w-100"
@@ -68,6 +68,7 @@
             tipoOperador = 0;
             esIgual = false;
             $('#resultado').text(numero);
+            $('#eliminar').on('click', Eliminar);
             $('.numero').each((index, element) => {
                 $(element).on('click', setNumero);
             })
@@ -85,12 +86,20 @@
             if (esIgual === true) {
                 $('#operacion').text('');
                 esIgual = false;
-                resultado= 0;
+                resultado = 0;
             }
             numero = numero + $(e.target).val();
             resultado == 'inviable' && ManejarInviable();
             numero = parseInt(numero);
             $('#resultado').text(numero)
+        }
+        function Eliminar() {
+            numero = 0;
+            $('#resultado').text(numero);
+            if(esIgual == true){
+                resultado = 0;
+                $('#operacion').text('');
+            }
         }
 
         function ManejarInviable() {
