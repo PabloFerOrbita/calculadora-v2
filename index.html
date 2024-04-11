@@ -86,28 +86,48 @@
                 $('#operacion').text('');
             }
             numero = numero + $(e.target).val();
+            resultado == 'inviable' && ManejarInviable();
             numero = parseInt(numero);
             $('#resultado').text(numero)
+        }
+
+        function ManejarInviable() {
+            resultado = 0;
+            tipoOperador = 0;
+            esIgual = false;
+            $('#operacion').text('');
+            $('#resultado').text(numero)
+            $('.operador').each((index, element) => {
+                $(element).val() !== '=' && $(element).prop('disabled', false);
+
+            })
         }
         async function ManejarOperacion(e) {
 
             if ($(e.target).val() === '=') {
-                if (numero === 'resul') {
-                    numero = resultado;
-                }
-                if (tipoOperador !== 0) {
-                    $('#operacion').text(resultado + ' ' + tipoOperador + ' ' + numero + '=');
-                    esIgual = true;
+                if (resultado === 'inviable') {
+                    ManejarInviable();
                 } else {
-                    $('#operacion').text(numero + '=');
+                    if (numero === 'resul') {
+                        numero = resultado;
+                    }
+
+                    if (tipoOperador !== 0) {
+                        $('#operacion').text(resultado + ' ' + tipoOperador + ' ' + numero + '=');
+                        esIgual = true;
+                    } else {
+                        $('#operacion').text(numero + '=');
+                    }
+                    await operar();
                 }
-                await operar();
 
             } else {
 
                 await operar();
                 tipoOperador = $(e.target).val();
-                $('#operacion').text(resultado + ' ' + tipoOperador);
+                if (resultado !== 'inviable') {
+                    $('#operacion').text(resultado + ' ' + tipoOperador);
+                }
             }
         }
 
@@ -122,12 +142,21 @@
                 data: { numero: numero, resultado: resultado, operador: tipoOperador },
                 success: (data) => {
                     resultado = data.resultado;
-                    if (esIgual === false) {
-                        numero = 'resul';
+                    if (resultado !== 'inviable') {
+                        if (esIgual === false) {
+                            numero = 'resul';
+                        }
+                        $('#resultado').text(resultado);
+
+
+                    } else {
+                        $('#resultado').text('No es posible dividir entre 0');
+                        numero = 0;
+                        $('.operador').each((index, element) => {
+                            $(element).val() !== '=' && $(element).prop('disabled', true);
+
+                        })
                     }
-                    $('#resultado').text(resultado);
-
-
                 }
             })
         }

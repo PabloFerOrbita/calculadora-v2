@@ -14,7 +14,7 @@ switch ($operador) {
         $resultado = $resultado * $numero;
         break;
     case '/':
-        if ($numero !== 0){
+        if ($numero != 0){
         $resultado = $resultado / $numero;
         } else {
             $resultado = 'inviable';
