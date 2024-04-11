@@ -61,10 +61,12 @@
         var tipoOperador;
         var resultado;
         var numero;
+        var esIgual;
         function cargarPagina() {
             numero = 0;
             resultado = 0;
             tipoOperador = 0;
+            esIgual = false;
             $('#resultado').text(numero);
             $('.numero').each((index, element) => {
                 $(element).on('click', setNumero);
@@ -76,11 +78,11 @@
 
         }
         function setNumero(e) {
-            if (numero === 'resul') {
+            if (numero === 'resul' || esIgual == true) {
                 numero = 0;
 
             }
-            if (tipoOperador === 0) {
+            if (esIgual === true) {
                 $('#operacion').text('');
             }
             numero = numero + $(e.target).val();
@@ -93,8 +95,13 @@
                 if (numero === 'resul') {
                     numero = resultado;
                 }
-                $('#operacion').text(resultado + ' ' + tipoOperador + ' ' + numero + '=');
-                operar();
+                if (tipoOperador !== 0) {
+                    $('#operacion').text(resultado + ' ' + tipoOperador + ' ' + numero + '=');
+                    esIgual = true;
+                } else {
+                    $('#operacion').text(numero + '=');
+                }
+                await operar();
 
             } else {
 
@@ -115,8 +122,9 @@
                 data: { numero: numero, resultado: resultado, operador: tipoOperador },
                 success: (data) => {
                     resultado = data.resultado;
-                    numero = 'resul';
-                    tipoOperador = 0;
+                    if (esIgual === false) {
+                        numero = 'resul';
+                    }
                     $('#resultado').text(resultado);
 
 
