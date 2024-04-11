@@ -78,14 +78,19 @@
         function setNumero(e) {
             if (numero === 'resul') {
                 numero = 0;
+
+            }
+            if (tipoOperador === 0) {
+                $('#operacion').text('');
             }
             numero = numero + $(e.target).val();
             numero = parseInt(numero);
             $('#resultado').text(numero)
         }
         async function ManejarOperacion(e) {
+
             if ($(e.target).val() === '=') {
-                if (numero === 'resul'){
+                if (numero === 'resul') {
                     numero = resultado;
                 }
                 $('#operacion').text(resultado + ' ' + tipoOperador + ' ' + numero + '=');
@@ -100,7 +105,7 @@
         }
 
 
-        
+
 
         function operar() {
             return $.ajax({
@@ -111,7 +116,7 @@
                 success: (data) => {
                     resultado = data.resultado;
                     numero = 'resul';
-
+                    tipoOperador = 0;
                     $('#resultado').text(resultado);
 
 
