@@ -23,4 +23,28 @@ class Calculadora
         }
         echo '</div></div>';
     }
+
+    public function sumar($numero, $resultado)
+    {
+        return doubleval($resultado) + doubleval($numero);
+    }
+
+    public function multiplicar($resultado, $numero)
+    {
+        return doubleval($resultado) * doubleval($numero);
+    }
+
+    public function dividir($resultado, $numero)
+    {
+        if ($numero != 0) {
+            return doubleval($resultado) / doubleval($numero);
+        } else {
+            return 'inviable';
+        }
+    }
+
+    public function restar($resultado, $numero)
+    {
+        return doubleval($resultado) - doubleval($numero);
+    }
 }
