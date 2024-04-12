@@ -7,23 +7,23 @@ $operador = $_GET['operador'] ?? 0;
 
     switch ($operador) {
         case '-':
-            $resultado = $resultado - $numero;
+            $resultado = doubleval($resultado) - doubleval($numero);
             break;
         case '+':
-            $resultado = $resultado + $numero;
+            $resultado =   doubleval($resultado) + doubleval($numero);
             break;
         case '*':
-            $resultado = $resultado * $numero;
+            $resultado = doubleval($resultado) * doubleval($numero);
             break;
         case '/':
             if ($numero != 0) {
-                $resultado = $resultado / $numero;
+                $resultado = doubleval($resultado) / doubleval($numero);
             } else {
                 $resultado = 'inviable';
             }
             break;
         default:
-            $resultado = $numero;
+            $resultado = intval($numero);
     }
 
     echo json_encode(array('numero' => $numero, 'operador' => $operador, 'resultado' => $resultado));
