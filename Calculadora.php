@@ -65,5 +65,7 @@ class Calculadora
             default:
                 $resultado = intval($numero);
         }
+
+        return $resultado;
     }
 }
