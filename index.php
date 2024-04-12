@@ -127,7 +127,7 @@
 
             } else {
                 if (esIgual == true) {
-                    numero = 0;
+                    numero = 'resul';
                 } else if (numero != 'resul') {
                     await operar();
                 }
