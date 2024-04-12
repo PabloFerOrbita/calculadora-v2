@@ -2,25 +2,22 @@
 $numero = $_GET['numero'] ?? 0;
 $resultado = $_GET['resultado'] ?? 0;
 $operador = $_GET['operador'] ?? 0;
-
+require_once 'Calculadora.php';
+$calculadora = new Calculadora();
 
 
     switch ($operador) {
         case '-':
-            $resultado = doubleval($resultado) - doubleval($numero);
+            $resultado = $calculadora->restar($resultado, $numero);
             break;
         case '+':
-            $resultado =   doubleval($resultado) + doubleval($numero);
+            $resultado =   $calculadora->sumar($resultado, $numero);
             break;
         case '*':
-            $resultado = doubleval($resultado) * doubleval($numero);
+            $resultado = $calculadora->multiplicar($resultado, $numero);
             break;
         case '/':
-            if ($numero != 0) {
-                $resultado = doubleval($resultado) / doubleval($numero);
-            } else {
-                $resultado = 'inviable';
-            }
+            $resultado = $calculadora->dividir($resultado, $numero);
             break;
         default:
             $resultado = intval($numero);
