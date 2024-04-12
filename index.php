@@ -57,6 +57,8 @@
 
         </div>
     </div>
+   
+
     <script>
         var tipoOperador;
         var resultado;
