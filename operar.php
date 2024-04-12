@@ -7,7 +7,6 @@ $calculadora = new Calculadora();
 
 
    
-    }
 
-    echo json_encode(array('numero' => $numero, 'operador' => $operador, 'resultado' => $resultado));
+    echo json_encode(array('numero' => $numero, 'operador' => $operador, 'resultado' => $calculadora->calculo($resultado, $numero, $operador)));
 
