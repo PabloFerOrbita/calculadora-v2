@@ -24,7 +24,11 @@
     
     echo '<div class="container w-25 mt-3"><div class ="row"><h6 id ="operacion"></h6><h3 id="resultado"></h3></div>';
     echo '<div class="row gy-2">';
-    
+    foreach($calculadora as $i => $fila){
+        foreach($calculadora[$i] as $celda){
+            echo '<div class="col-' . $celda['Columnas'] . '"><button type="button" id = "' . $celda['Id'] . '" class ="' . $celda['Clase'] . ' ' . $celda['Estilos'] . '" value="' . $celda["Valor"] . '">' . $celda["Texto"] . '</button></div>';
+        }
+    }
     echo '</div></div>';
                 
    ?>
