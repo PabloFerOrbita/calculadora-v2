@@ -24,7 +24,7 @@ class Calculadora
         echo '</div></div>';
     }
 
-    public function sumar($numero, $resultado)
+    public function sumar($resultado, $numero)
     {
         return doubleval($resultado) + doubleval($numero);
     }
