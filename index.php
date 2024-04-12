@@ -13,7 +13,9 @@
 <body>
 
     <?php
-    
+    require_once 'Calculadora.php';
+    $calculadora = new Calculadora();
+    $calculadora -> imprimir();
 
     ?>
 
