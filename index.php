@@ -13,50 +13,7 @@
 </head>
 
 <body>
-    <div class="container w-25 mt-3">
-        <div class="row">
-            <h6 id="operacion"></h6>
-            <h3 id="resultado"></h3>
-        </div>
-
-        <div class="row gy-2">
-            <div class="col-6"><button type="button" class="btn btn-light btn-outline-secondary p-3 w-100" value='CE'
-                    id="eliminar">CE</button></div>
-            <div class="col-6"><button type="button" class="btn btn-light btn-outline-secondary p-3 w-100" value="C"
-                    id="resetear">C</button></div>
-            <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero p-3 w-100"
-                    value=7>7</button></div>
-            <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero p-3 w-100"
-                    value=8>8</button></div>
-            <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero p-3 w-100"
-                    value=9>9</button></div>
-            <div class="col-3"><button type="button" class="operador btn btn-light btn-outline-secondary p-3 w-100"
-                    value='/' id="dividir">/</button></div>
-            <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero p-3 w-100"
-                    value=4>4</button></div>
-            <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero p-3 w-100"
-                    value=5>5</button></div>
-            <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero p-3 w-100"
-                    value=6>6</button></div>
-            <div class="col-3"><button type="button" class="operador btn btn-light btn-outline-secondary w-100 p-3"
-                    value='-' id="restar">-</button></div>
-            <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero w-100 p-3"
-                    value=3>3</button></div>
-            <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero w-100 p-3"
-                    value=2>2</button></div>
-            <div class="col-3"><button type="button" class="btn btn-light btn-outline-secondary numero w-100 p-3"
-                    value=1>1</button></div>
-            <div class="col-3"><button type="button" class="operador btn btn-light btn-outline-secondary p-3 w-100"
-                    value='+' id="sumar">+</button></div>
-            <div class="col-9"><button type="button" class="btn btn-light btn-outline-secondary numero w-100 p-3"
-                    value=0>0</button></div>
-            <div class="col-3"><button type="button" class="operador btn btn-light btn-outline-secondary p-3 w-100"
-                    value='*' id="multiplicar">*</button></div>
-            <div class="col-12"><button type="button" class="operador btn btn-light btn-outline-secondary p-3 w-100"
-                    value='=' id="igual">=</button></div>
-
-        </div>
-    </div>
+ 
    <?php
    $calculadora = [[["Id"=>'eliminar', "Clase"=>'borrador', "Estilos"=>'btn btn-light btn-outline-secondary p-3 w-100', "Valor"=>"CE", "Texto"=>"CE", "Columnas"=>'6'],["Id"=>'resetear', "Clase"=>'borrador', "Estilos"=>'btn btn-light btn-outline-secondary p-3 w-100', "Valor"=>"C", "Texto"=>"C", "Columnas"=>'6']],
                 [["Id"=>'7', "Clase"=>'numero', "Estilos"=>'btn btn-light btn-outline-secondary p-3 w-100', "Valor"=>"7", "Texto"=>"7", "Columnas"=>'3'],["Id"=>'8', "Clase"=>'numero', "Estilos"=>'btn btn-light btn-outline-secondary p-3 w-100', "Valor"=>"8", "Texto"=>"8", "Columnas"=>'3'],["Id"=>'9', "Clase"=>'numero', "Estilos"=>'btn btn-light btn-outline-secondary p-3 w-100', "Valor"=>"9", "Texto"=>"9", "Columnas"=>'3'],["Id"=>'/', "Clase"=>'operador', "Estilos"=>'btn btn-light btn-outline-secondary p-3 w-100', "Valor"=>"/", "Texto"=>"/", "Columnas"=>'3']],
